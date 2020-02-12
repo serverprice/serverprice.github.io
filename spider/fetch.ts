@@ -4,6 +4,8 @@ import fs = require("fs");
 import path = require("path");
 const url = `https://a0.p.awsstatic.com/pricing/1.0/ec2/region/us-east-1/ondemand/linux/index.json?timestamp=${+new Date()}`;
 
+const removeTrailingZero = (s: string): string => parseFloat(s).toString();
+
 axios
   .get(url)
   .then(function(response) {
@@ -15,7 +17,7 @@ axios
         e["attributes"]["aws:ec2:instanceType"],
         e["attributes"]["aws:ec2:vcpu"],
         e["attributes"]["aws:ec2:memory"],
-        e["price"]["USD"]
+        removeTrailingZero(e["price"]["USD"])
       ]);
     });
     data = data.sort((l, r) => {
