@@ -17,3 +17,5 @@ deploy:
     branch: src 
   local-dir: public
   target_branch: master
+git:
+  submodule: true
