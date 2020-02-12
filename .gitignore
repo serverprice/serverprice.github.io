@@ -5,3 +5,6 @@ db.json
 node_modules/
 public/
 .deploy*/
+
+# post auto created
+source/_posts/dynamic/
