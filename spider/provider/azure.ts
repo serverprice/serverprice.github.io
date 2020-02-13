@@ -22,7 +22,7 @@ export function azure(
           continue;
         }
         data.push([
-          item["series"],
+          k + " " + item["series"],
           item["cores"],
           item["ram"],
           item.prices.perhour[zone].value.toString()
