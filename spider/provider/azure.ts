@@ -13,8 +13,14 @@ export function azure(
     .get(url)
     .then(function(response) {
       let data = [];
-      for (let k of response.data.offers) {
+      for (let k in response.data.offers) {
         let item = response.data.offers[k];
+        if (
+          item.prices.perhour === undefined ||
+          item.prices.perhour[zone] === undefined
+        ) {
+          continue;
+        }
         data.push([
           item["series"],
           item["cores"],
